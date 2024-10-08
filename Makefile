@@ -12,7 +12,7 @@
 
 NAME := pipex
 
-SRC := main.c pipex.c
+SRC := close_pipes.c executor.c init_pipex.c main.c wait_loop.c
 
 OBJ := $(SRC:%.c=%.o)
 

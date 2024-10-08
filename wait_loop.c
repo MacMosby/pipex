@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   wait_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcrodenbusch <marcrodenbusch@student.    +#+  +:+       +#+        */
+/*   By: mrodenbu <mrodenbu@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/05 00:31:57 by mrodenbu          #+#    #+#             */
-/*   Updated: 2024/10/05 19:57:22 by marcrodenbu      ###   ########.fr       */
+/*   Created: 2024/10/08 16:19:09 by mrodenbu          #+#    #+#             */
+/*   Updated: 2024/10/08 16:19:10 by mrodenbu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	main(int argc, char **argv, char **envp)
+void	wait_loop(t_data *data)
 {
-	t_data	data;
+	int	i = 0;
+	int	status = 0;
 
-	init_data(&data, argc, argv, envp);
-	executor(&data);
-	wait_loop(&data);
-	return (0);
+	while (i < data->num_of_processes)
+	{
+		waitpid(data->pids[i], &status, 0);
+		i++;
+	}
 }

@@ -26,7 +26,22 @@ typedef struct s_data
 	char **env;
 	int	num_of_processes;
 	int	**pipes;
-	int **pids;
+	int *pids;
 }	t_data;
+
+// close_pipes.c
+void	close_pipes(t_data *data);
+
+// executor.c
+void	executor(t_data *data);
+void	fork_executor(t_data *data, int i);
+
+// init_pipex.c
+void	init_pipes(t_data *data);
+void	init_pids(t_data *data);
+void	init_data(t_data *data, int argc, char **argv, char **envp);
+
+// wait_loop.c
+void	wait_loop(t_data *data);
 
 #endif
